@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'mbike.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'masterbikes',
+        'USER': 'prod',
+        'PASSWORD': 'i4eMFXdNLCqDpGbz3Iq0IWBzxUZOYhTyKmaac6gFgZfWoibN2f',
+        'HOST': 'sebas-sql.cpas22imgt0b.sa-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 

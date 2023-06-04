@@ -3,11 +3,14 @@
 Registro
 {% endblock titulo %}
 {% block contenido %}
-<main id="fondo" class="form-signin w-100 m-auto text-center">
-    <form action="{% url 'registrar_nuevo' %}" method="POST">
-        {% csrf_token %}
-        {{ registro }}
-        <button role="submit" type="submit">Registrarse</button>
-    </form>
+<main id="body1" class="form-signin w-100 m-auto text-center" class="container">
+    <article class="tama row">
+        <h1>Registrarse</h1>
+        <form action="{% url 'registrar_nuevo' %}" method="POST" class="col-md-6">
+            {% csrf_token %}
+            {{ registro }}
+            <button class="w-100 btn btn-lg btn-primary" role="submit" type="submit">Registrarse</button>
+        </form>
+    </article>
 </main>
 {% endblock contenido %}
