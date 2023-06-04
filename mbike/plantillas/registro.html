@@ -1,0 +1,13 @@
+{% extends 'base/padre.html' %}
+{% block titulo %}
+Registro
+{% endblock titulo %}
+{% block contenido %}
+<main class="form-signin w-100 m-auto text-center">
+    <form action="{% url 'registrar_nuevo' %}" method="POST">
+        {% csrf_token %}
+        {{ registro }}
+        <button role="submit" type="submit">Registrarse</button>
+    </form>
+</main>
+{% endblock contenido %}
