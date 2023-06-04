@@ -3,7 +3,7 @@
 Registro
 {% endblock titulo %}
 {% block contenido %}
-<main class="form-signin w-100 m-auto text-center">
+<main id="fondo" class="form-signin w-100 m-auto text-center">
     <form action="{% url 'registrar_nuevo' %}" method="POST">
         {% csrf_token %}
         {{ registro }}
