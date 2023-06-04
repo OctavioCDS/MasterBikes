@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import mostrar_registro,principal,registrar_nuevo
+from .views import mostrar_registro, principal, registrar_nuevo, iniciar_sesion, mostrar_iniciar_sesion
 
 urlpatterns = [
     path('princi/',principal,name='pagina_principal'),
     path('',mostrar_registro,name='regi'),
     path('registrar/',registrar_nuevo,name='registrar_nuevo'),
     path('admin/', admin.site.urls),
+    path('iniciar/',iniciar_sesion,name='iniciar_sesion'),
+    path('iniciarses/',mostrar_iniciar_sesion,name='iniciar_sesion_user'),
 ]
 if settings.DEBUG == True:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

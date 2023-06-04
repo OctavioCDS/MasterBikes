@@ -1,0 +1,15 @@
+{% extends 'base/padre.html' %}
+
+{% block titulo %}
+Iniciar Sesión
+{% endblock titulo %}
+
+{% block contenido %}
+<main class="form-signin w-100 m-auto text-center">
+    <form action="{% url 'iniciar_sesion' %}" method="POST">
+        {% csrf_token %}
+        {{ formulario_sesion }}
+        <button role="submit" type="submit">Iniciar Sesión</button>
+    </form>
+</main>
+{% endblock contenido %}
