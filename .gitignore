@@ -1,0 +1,22 @@
+# Entorno virtual python
+
+entorno
+.env
+.venv
+venv
+virtual
+
+# Editor de texto
+
+idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.nvimlog
+
+# Proyecto
+
+__pycache__/
