@@ -3,15 +3,74 @@
 Registro
 {% endblock titulo %}
 {% block contenido %}
-<main id="body1" class="form-signin w-100 m-auto text-center" class="container">
-    <article class="tama row">
-        <h1>Registrarse</h1>
+<main id="body1" class="form-signin w-100 m-auto text-center" >
+    <form method="POST" >
+        {% csrf_token %}
+        <section class="tama container">
+        <h1 class="text-center">Registrarse</h1>
         <hr>
-        <form action="{% url 'registrar_nuevo' %}" method="POST" class="col-md-6">
-            {% csrf_token %}
-            {{ registro }}
-            <button class="w-100 btn btn-lg btn-primary" role="submit" type="submit">Registrarse</button>
-        </form>
-    </article>
+        <article class="row">
+            <fieldset class="col-md-col-10">
+                <label>{{ formulario.username.label }}</label>
+                {{ formulario.username }}
+                <p class="feedback-invalid">
+                    {{ formulario.username.errors }}
+                </p>
+            </fieldset>
+        </article>
+        <article class="row">
+            <fieldset class="col-6">
+                <label>{{ formulario.first_name.label }}</label>
+                {{ formulario.first_name }}
+                <p class="feedback-invalid">
+                    {{ formulario.first_name.errors }}
+                </p>
+            </fieldset>
+            <fieldset class="col-6">
+                <label>{{ formulario.last_name.label }}</label>
+                {{ formulario.last_name }}
+                <p class="feedback-invalid">
+                    {{ formulario.last_name.errors }}
+                </p>
+            </fieldset>
+        </article>
+        <article class="row">
+            <fieldset class="col-12">
+                <label>{{ formulario.email.label }}</label>
+                {{ formulario.email }}
+                <p class="feedback-invalid">
+                    {{ formulario.email.errors }}
+                </p>
+            </fieldset>
+        </article>
+        <article class="row">
+            <fieldset class="col-6">
+                <label>{{ formulario.password1.label }}</label>
+                {{ formulario.password1 }}
+                <p class="feedback-invalid">
+                    {{ formulario.password1.errors }}
+                </p>
+            </fieldset>
+            <fieldset class="col-6">
+                <label>{{ formulario.password2.label }}</label>
+                {{ formulario.password2 }}
+                <p class="feedback-invalid">
+                    {{ formulario.password2.errors }}
+                </p>
+            </fieldset>
+        </article>
+        <hr>
+        <article class="row">
+            <fieldset class="col-12">
+                <button class="w-100 btn btn-success">Registrarse</button>
+
+            </fieldset>
+
+        </article>
+
+
+
+        </section>
+    </form>
 </main>
 {% endblock contenido %}

@@ -20,6 +20,9 @@
     {% endblock contenido %}
 
     <script src="{% static 'boot/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% load sweetify %}
+    {% sweetify %}
 
     {% block js %}
     {% endblock js %}
