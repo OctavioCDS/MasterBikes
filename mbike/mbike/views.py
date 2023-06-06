@@ -4,8 +4,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info,success,warning,error
 
-def principal(request):
+def Principal(request):
     return render(request,'principal.html')
+
+def Mantenciones(request):
+    
+    return render(request,'Mantenciones.html')
+
+def Producto(request):
+    return render(request,'Producto.html')
+
+
 
 def mostrar_registro(request):
         if request.method == 'GET':
@@ -19,7 +28,7 @@ def mostrar_registro(request):
             if es_valido: # Si bool es True
                 usuario_nuevo = formulario_registro.save()
                 success(request,'Gracias por registrarse con nosotros :D')
-                return redirect('pagina_principal')
+                return redirect('Principal')
             contexto = {
                 'formulario': formulario_registro
             }
@@ -35,7 +44,7 @@ def mostrar_iniciar_sesion(request):
 
 def iniciar_sesion (request):
     if request.method == 'GET':
-        return redirect('pagina_principal')
+        return redirect('principal.html')
     if request.method == 'POST':
         contexto = {
         'titulo': 'Bienvenido, inicie sesión',
@@ -48,14 +57,18 @@ def iniciar_sesion (request):
             usuar = authenticate(request, usuario=usuario, contrasenia=contrasenia)
             if usuar is not None:
                 login(request, usuar)
+<<<<<<< HEAD
                 success(request,'Sesión iniciada con éxito')
                 return redirect('pagina_principal')
+=======
+                return redirect('principal.html')
+>>>>>>> d6ff79fb3f91cc3cd8b4d2b15d0f5ecef2a8a08d
             else:
-                return render(request, "error.html")
+                return render(request, "principal.html")
         else:
             form.add_error(None, 'Credenciales inválidas')
-            return render(request, "error.html")
+            return render(request, "principal.html")
 
 def desconectarse(request):
     logout(request)
-    return redirect('pagina_principal')
+    return redirect('principal.html')

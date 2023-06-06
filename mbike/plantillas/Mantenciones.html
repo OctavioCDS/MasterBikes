@@ -1,0 +1,55 @@
+{% extends 'base/padre.html' %}
+{% block titulo %}
+Mantenciones
+{% endblock titulo %}
+{% block contenido %}
+<br>
+<br>
+<h1>Historial de Mantenimiento de Usuarios
+
+</h1>
+    
+   
+<body>
+    <table>
+        <tr>
+            <th 1>Fecha</th>
+            <th 2>Descripción</th>
+            <th 3>Tipo de Mantenimiento</th>
+        </tr>
+        <!-- Aquí irán las filas con los datos del historial -->
+        <tr>
+            <td 1 >2023-05-01</td>
+            <td 2>Cambio de aceite</td>
+            <td 3>Preventivo</td>
+        </tr>
+        <br>
+        <tr>
+            <td 1>2023-05-15</td>
+            <td 2>Reemplazo de frenos</td>
+            <td 3>Correctivo</td>
+        </tr>
+    </table>
+
+
+    <style>
+
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</body>
+
+
+{% endblock contenido %}
+
