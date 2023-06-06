@@ -31,7 +31,7 @@ def mostrar_iniciar_sesion(request):
         'titulo': 'Bienvenido, inicie sesión',
         'formulario_sesion':Iniciar_Sesion()
     }
-    return render(request,'inisesion.html',contexto)
+    return render(request,'iniciar_sesion.html',contexto)
 
 def iniciar_sesion (request):
     if request.method == 'GET':
@@ -48,6 +48,7 @@ def iniciar_sesion (request):
             usuar = authenticate(request, usuario=usuario, contrasenia=contrasenia)
             if usuar is not None:
                 login(request, usuar)
+                success(request,'Sesión iniciada con éxito')
                 return redirect('pagina_principal')
             else:
                 return render(request, "error.html")

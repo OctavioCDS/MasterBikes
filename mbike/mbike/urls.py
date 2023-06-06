@@ -25,7 +25,7 @@ urlpatterns = [
     path('',mostrar_registro,name='regi'),
     path('admin/', admin.site.urls),
     path('iniciar/',iniciar_sesion,name='iniciar_sesion'),
-    path('iniciarses/',mostrar_iniciar_sesion,name='iniciar_sesion_user'),
+    path('sesion/',mostrar_iniciar_sesion,name='iniciar_sesion_user'),
 ]
 if settings.DEBUG == True:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
