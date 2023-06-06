@@ -49,8 +49,3 @@ class Iniciar_Sesion(ModelForm):
                 }
             )
         }
-        error_messages = {
-            "msg": {
-                "max_length": ("Error we haces todo mal"),
-            },
-        }

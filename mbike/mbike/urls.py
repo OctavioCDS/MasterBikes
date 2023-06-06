@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import mostrar_registro, Principal,Mantenciones,Producto, iniciar_sesion, mostrar_iniciar_sesion
+from .views import mostrar_registro, Principal,Mantenciones,Producto, mostrar_iniciar_sesion
 
 urlpatterns = [
     path('',Principal,name='Principal'),
@@ -26,7 +26,6 @@ urlpatterns = [
     path('Producto/',Producto,name='Producto'),
     path('mostrar_registro',mostrar_registro,name='mostrar_registro'),
     path('admin/', admin.site.urls),
-    path('iniciar/',iniciar_sesion,name='iniciar_sesion'),
     path('mostrar_iniciar_sesion/',mostrar_iniciar_sesion,name='mostrar_iniciar_sesion'),
 ]
 if settings.DEBUG == True:
