@@ -24,8 +24,8 @@ def mostrar_registro(request):
             return render(request,'registro.html',contexto)
         if request.method == 'POST':
             formulario_registro = Registro(data=request.POST)
-            es_valido = formulario_registro.is_valid() # Retorna un bool
-            if es_valido: # Si bool es True
+            es_valido = formulario_registro.is_valid()
+            if es_valido:
                 usuario_nuevo = formulario_registro.save()
                 success(request,'Gracias por registrarse con nosotros :D')
                 return redirect('Principal')
@@ -35,40 +35,26 @@ def mostrar_registro(request):
             warning(request,'Ups... ha ocurrido un error en la insercion de datos')
             return render(request,'registro.html',contexto)
 
-def mostrar_iniciar_sesion(request):
-    contexto = {
-        'titulo': 'Bienvenido, inicie sesión',
-        'formulario_sesion':Iniciar_Sesion()
-    }
-    return render(request,'iniciar_sesion.html',contexto)
-
-def iniciar_sesion (request):
+def mostrar_iniciar_sesion (request):
     if request.method == 'GET':
-        return redirect('principal.html')
+            contexto = {
+                'formulario_sesion':Iniciar_Sesion()
+            }
+            return render(request,'iniciar_sesion.html',contexto)
     if request.method == 'POST':
-        contexto = {
-        'titulo': 'Bienvenido, inicie sesión',
-        'formulario_sesion':Iniciar_Sesion()
-        }  
-        form = Iniciar_Sesion(request.POST)
-        if form.is_valid():
-            usuario = request.POST["username"]
-            contrasenia = request.POST["password"]
-            usuar = authenticate(request, usuario=usuario, contrasenia=contrasenia)
-            if usuar is not None:
-                login(request, usuar)
-<<<<<<< HEAD
-                success(request,'Sesión iniciada con éxito')
-                return redirect('pagina_principal')
-=======
-                return redirect('principal.html')
->>>>>>> d6ff79fb3f91cc3cd8b4d2b15d0f5ecef2a8a08d
-            else:
-                return render(request, "principal.html")
+        form = Iniciar_Sesion(data=request.POST)
+        user = request.POST["username"]
+        contra = request.POST["password"]
+        usuario = authenticate(request, username=user, password=contra)
+        if usuario is not None:
+            success(request,f'Sesión iniciada con éxito, bienvenid@ {user}')
+            login(request, usuario)
+            return redirect('Principal')
         else:
-            form.add_error(None, 'Credenciales inválidas')
-            return render(request, "principal.html")
+            warning(request,'Error en los datos ingresados, re-intentar')
+            return redirect('mostrar_iniciar_sesion')
 
 def desconectarse(request):
     logout(request)
+    success(request,'Sesión cerrada con éxito')
     return redirect('principal.html')

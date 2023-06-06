@@ -5,11 +5,32 @@ Iniciar Sesión
 {% endblock titulo %}
 
 {% block contenido %}
-<main class="form-signin w-100 m-auto text-center">
-    <form action="{% url 'iniciar_sesion' %}" method="POST">
+<main id="fondo_sesion"  class="form-signin text-center" >
+    <form action="{% url 'mostrar_iniciar_sesion' %}" method="POST">
         {% csrf_token %}
-        {{ formulario_sesion }}
-        <button role="submit" type="submit">Iniciar Sesión</button>
+        <section class="tama container">
+        <h1 class="text-center">Iniciar Sesión</h1>
+            <article class="row">
+                <fieldset class="offset-md-1 col-10">
+                    <label for="{{ formulario.username.id_for_label }}">{{ formulario_sesion.username.label }}</label>
+                    {{ formulario_sesion.username }}
+                    <p class="feedback-invalid">
+                        {{ formulario_sesion.username.errors }}
+                    </p>
+                </fieldset>
+                <fieldset class="offset-md-1 col-10">
+                    <label for="{{ formulario.password.id_for_label }}">{{ formulario_sesion.password.label }}</label>
+                    {{ formulario_sesion.password }}
+                    <p class="feedback-invalid">
+                        {{ formulario_sesion.password.errors }}
+                    </p>
+                </fieldset>
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="w-100 btn btn-success"">Iniciar Sesión</button>
+                </div>
+            </article>
+        </section>
     </form>
 </main>
 {% endblock contenido %}
