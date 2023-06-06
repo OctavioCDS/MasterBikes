@@ -21,7 +21,7 @@ from django.conf import settings
 from .views import mostrar_registro, Principal,Mantenciones,Producto, iniciar_sesion, mostrar_iniciar_sesion
 
 urlpatterns = [
-    path('Principal',Principal,name='Principal'),
+    path('',Principal,name='Principal'),
     path('Mantenciones/',Mantenciones,name='Mantenciones'),
     path('Producto/',Producto,name='Producto'),
     path('mostrar_registro',mostrar_registro,name='mostrar_registro'),
