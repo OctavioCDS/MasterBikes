@@ -1,28 +1,28 @@
-<nav class="navbar navbar-expand-lg " >
-    <div class="container-fluid bg-secondary p-2">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+{% load static %}
+
+<!-- Navbar -->
+<nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/LogoGG.png' %}" alt="logo" style="width: 170px; height: 60px">
+    </a>
+    <div class="align-content-lg-stretch">
+      <button class="navbar-toggler nav-item dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        MENU
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-
-          <div class="navbar-nav">
-            <a class="nav-link text-white" href="{% url 'Principal' %}"><b>Inicio</b></a>
-            <a class="nav-link text-white" href="#">Arriendos</a>
-            <a class="nav-link text-white" href="#">Reparacion</a>
-            <a class="nav-link text-white" href="{% url 'Producto' %}">Tienda</a>
-          </div>
-
-          
-
-          <div class="navbar-nav position-absolute top-2 end-0">
-            <a class="nav-link text-white" href="{% url 'mostrar_registro' %}">Registrarse</a>
-            <a class="nav-link text-white" href="{% url 'mostrar_iniciar_sesion' %}">Iniciar Sesion</a>              
-            <a class="nav-link text-white" href="{% url 'Mantenciones' %}">Mantenciones</a>
-          </div>
-        </div>
-      </div>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="{% url 'Principal' %}">Inicio</a></li>
+        <li><a class="dropdown-item" href="{% url 'Principal' %}">Arriendo</a></li>
+        <li><a class="dropdown-item" href="{% url 'Principal' %}">Reparacion</a></li>
+        <li><a class="dropdown-item" href="{% url 'Producto' %}">Tienda</a></li>
+        <hr>
+        <li><a class="dropdown-item" href="{% url 'mostrar_iniciar_sesion' %}">Iniciar Sesion</a></li>
+        <li><a class="dropdown-item" href="{% url 'mostrar_registro' %}">Registrarse</a></li>
+        <hr>
+        <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+<!-- Navbar -->
