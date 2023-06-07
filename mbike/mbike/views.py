@@ -37,24 +37,31 @@ def mostrar_registro(request):
 
 def mostrar_iniciar_sesion (request):
     if request.method == 'GET':
-            contexto = {
-                'formulario_sesion':Iniciar_Sesion()
-            }
-            return render(request,'iniciar_sesion.html',contexto)
+        contexto = {
+            'titulo': 'Bienvenido',
+            'formulario_sesion':Iniciar_Sesion()
+        }
+        return render(request,'iniciar_sesion.html',contexto)
     if request.method == 'POST':
-        form = Iniciar_Sesion(data=request.POST)
-        user = request.POST["username"]
-        contra = request.POST["password"]
-        usuario = authenticate(request, username=user, password=contra)
-        if usuario is not None:
-            success(request,f'Sesión iniciada con éxito, bienvenid@ {user}')
-            login(request, usuario)
-            return redirect('Principal')
-        else:
-            warning(request,'Error en los datos ingresados, re-intentar')
-            return redirect('mostrar_iniciar_sesion')
+        datos_usuario = Iniciar_Sesion(data = request.POST)
+        es_valido = datos_usuario.is_valid()
+        if es_valido:
+            usuario = authenticate(
+                username = datos_usuario.cleaned_data['usuario'],
+                password = datos_usuario.cleaned_data['contra']
+            )
+            if usuario is not None:
+                login(request, usuario)
+                success(request, f'Inicio de sesión correcto, bienvenido {usuario.username}')
+                return redirect('Principal')
+        warning(request, 'Usuario y contraseña invalidos')
+        contexto = {
+            'formulario_sesion': datos_usuario
+        }
+        return render(request,'iniciar_sesion.html', contexto)
 
-def desconectarse(request):
-    logout(request)
-    success(request,'Sesión cerrada con éxito')
-    return redirect('principal.html')
+def cerrar_sesion(request):
+    if request.user.is_authenticated:
+        logout(request)
+        success(request, 'Sesión cerrada')
+    return redirect('Principal')

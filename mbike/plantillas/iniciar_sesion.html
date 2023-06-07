@@ -15,17 +15,17 @@ Iniciar Sesión
         <h1 class="text-center">Iniciar Sesión</h1>
             <article class="row">
                 <fieldset class="offset-md-1 col-10">
-                    <label for="{{ formulario.username.id_for_label }}">{{ formulario_sesion.username.label }}</label>
-                    {{ formulario_sesion.username }}
+                    <label for="{{ formulario_sesion.usuario.id_for_label }}">{{ formulario_sesion.usuario.label }}</label>
+                    {{ formulario_sesion.usuario }}
                     <p class="feedback-invalid">
-                        {{ formulario_sesion.username.errors }}
+                        {{ formulario_sesion.usuario.errors }}
                     </p>
                 </fieldset>
                 <fieldset class="offset-md-1 col-10">
-                    <label for="{{ formulario.password.id_for_label }}">{{ formulario_sesion.password.label }}</label>
-                    {{ formulario_sesion.password }}
+                    <label for="{{ formulario_sesion.contra.id_for_label }}">{{ formulario_sesion.contra.label }}</label>
+                    {{ formulario_sesion.contra }}
                     <p class="feedback-invalid">
-                        {{ formulario_sesion.password.errors }}
+                        {{ formulario_sesion.contra.errors }}
                     </p>
                 </fieldset>
                 <hr>

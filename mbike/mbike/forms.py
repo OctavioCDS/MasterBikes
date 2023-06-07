@@ -1,5 +1,4 @@
-from django.forms import TextInput, PasswordInput, ModelForm,EmailInput
-
+from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm,EmailInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 class Registro(UserCreationForm):
@@ -33,19 +32,26 @@ class Registro(UserCreationForm):
             ),
         }
 
-class Iniciar_Sesion(ModelForm):
-    class Meta:
-        model = User
-        fields = ['username','password']
-        widgets = {
-            'username': TextInput(
-                attrs = {
-                    'class':'form-control'
-                }
-            ),
-            'password': PasswordInput(
-                attrs = {
-                    'class':'form-control'
-                }
-            )
-        }
+class Iniciar_Sesion(Form):
+    usuario = CharField(
+        required = True,
+        label = 'Ingrese su usuario',
+        widget = TextInput(
+            attrs = {
+                'class':'form-control',
+                'placeholder':'Nombre de Usuario'
+            }
+        )
+    )
+    contra = CharField(
+        required = True,
+        min_length = 4,
+        max_length = 16,
+        label = 'Ingrese su contraseña',
+        widget = PasswordInput(
+            attrs = {
+                'class':'form-control',
+                'placeholder':'Contraseña'
+            }
+        )
+    )

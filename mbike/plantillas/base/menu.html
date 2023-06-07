@@ -12,15 +12,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <ul class="dropdown-menu dropdown-menu-end">
+        <h4 class="dropdown-item disabled">Bienvenido {{ user.first_name }}</h4>
+        <hr>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Inicio</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Arriendo</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Reparacion</a></li>
         <li><a class="dropdown-item" href="{% url 'Producto' %}">Tienda</a></li>
         <hr>
+        <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
+        <hr>
+        {% if user.is_authenticated %}
+        <li><a class="dropdown-item" href="{% url 'cerrar_sesion' %}">Salir</a></li>
+        {% else %}
         <li><a class="dropdown-item" href="{% url 'mostrar_iniciar_sesion' %}">Iniciar Sesion</a></li>
         <li><a class="dropdown-item" href="{% url 'mostrar_registro' %}">Registrarse</a></li>
-        <hr>
-        <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>
