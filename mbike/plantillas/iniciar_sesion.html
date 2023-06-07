@@ -1,8 +1,11 @@
 {% extends 'base/padre.html' %}
-
+{% load static  %}
 {% block titulo %}
 Iniciar Sesión
 {% endblock titulo %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'Styles/diseño2.css' %}">
+{% endblock css %}
 
 {% block contenido %}
 <main id="fondo_sesion"  class="form-signin text-center" >
@@ -27,7 +30,7 @@ Iniciar Sesión
                 </fieldset>
                 <hr>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="w-100 btn btn-success"">Iniciar Sesión</button>
+                    <button class="w-100 btn btn-success">Iniciar Sesión</button>
                 </div>
             </article>
         </section>
