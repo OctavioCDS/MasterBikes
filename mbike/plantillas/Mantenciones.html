@@ -1,21 +1,26 @@
 {% extends 'base/padre.html' %}
+{% load static  %}
 {% block titulo %}
 Mantenciones
 {% endblock titulo %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Styles/diseño_tienda.css' %}">
+{% endblock css %}
+
+
 {% block contenido %}
 <br>
 <br>
-<h1>Historial de Mantenimiento de Usuarios
 
-</h1>
+<h1>Historial de Mantenimiento de Usuarios</h1>
     
    
-<body>
     <table>
         <tr>
-            <th 1>Fecha</th>
-            <th 2>Descripción</th>
-            <th 3>Tipo de Mantenimiento</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Tipo de Mantenimiento</th>
         </tr>
         <!-- Aquí irán las filas con los datos del historial -->
         <tr>
@@ -32,23 +37,11 @@ Mantenciones
     </table>
 
 
-    <style>
 
-    
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</body>
+<br>
+<br>
+<br>
+<br>
 
 
 {% endblock contenido %}

@@ -17,8 +17,9 @@
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Inicio</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Arriendo</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Reparacion</a></li>
-        <li><a class="dropdown-item" href="{% url 'Producto' %}">Tienda</a></li>
+        <li><a class="dropdown-item" href="{% url 'Tienda_bicicletas' %}">Tienda</a></li>
         <hr>
+
         <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
         <hr>
         {% if user.is_authenticated %}
