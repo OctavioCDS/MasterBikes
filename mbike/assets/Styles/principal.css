@@ -1,0 +1,19 @@
+body{
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+}
+.marcot{
+    border: solid 2px blue;
+    height: 40%;
+}
+.gif{
+    height: 100%;
+}
+.tamañogif{
+    width: 100%;
+
+}
+.flex{
+    display: flex;
+}
