@@ -11,10 +11,17 @@ def Mantenciones(request):
     
     return render(request,'Mantenciones.html')
 
-def Producto(request):
-    return render(request,'Producto.html')
+#tiendas
+#def Tienda_ropa(request):
+#    return render(request,'Tienda_ropa.html')
 
+#def Tienda_articulos(request):
+#    return render(request,'Tienda_articulos.html')
 
+def Tienda_bicicletas(request):
+    return render(request,'Tienda_bicicletas.html')
+
+#fin tiendas
 
 def mostrar_registro(request):
         if request.method == 'GET':

@@ -21,14 +21,22 @@ from django.conf import settings
 from .views import (mostrar_registro,
  Principal,
  Mantenciones,
- Producto,
+ #Tienda
+ #Tienda_articulos,
+ Tienda_bicicletas,
+ #Tienda_ropa,
+ #Fin tienda
  mostrar_iniciar_sesion,
  cerrar_sesion)
 
 urlpatterns = [
     path('',Principal,name='Principal'),
     path('Mantenciones/',Mantenciones,name='Mantenciones'),
-    path('Producto/',Producto,name='Producto'),
+    #Tienda
+    #path('Tienda_articulos/',Tienda_articulos,name='Tienda_articulos'),
+    path('Tienda_bicicletas/',Tienda_bicicletas,name='Tienda_bicicletas'),
+    #path('Tienda_ropa/',Tienda_ropa,name='Tienda_ropa'),
+    #Fin tienda
     path('mostrar_registro',mostrar_registro,name='mostrar_registro'),
     path('admin/', admin.site.urls),
     path('mostrar_iniciar_sesion/',mostrar_iniciar_sesion,name='mostrar_iniciar_sesion'),

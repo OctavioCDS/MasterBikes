@@ -1,0 +1,100 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+
+
+{% block titulo %}
+
+Bicicletas
+{% endblock titulo %}
+
+{% block js %}
+<script src="{% static 'js2/app.js' %}" async></script>
+{% endblock js %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'Styles/estilo.css' %}">
+{% endblock css %}
+
+
+{% block contenido %}
+
+
+    <header id="fondo"><h1>Bicicletas</h1></header>
+    <section class="contenedor">
+        <!-- Contenedor de elementos -->
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-item">BIANCHI - XC 240 SX ALLOY 24"</span>
+                <img src="{% static 'img_tienda/bicicletas1.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 339.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - ADVANTAGE 27" SX</span>
+                <img src="{% static 'img_tienda/bicicletas2.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 399.990</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - STONE MOUNTAIN 29" SX</span>
+                <img src="{% static 'img_tienda/bicicletas3.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 449.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - STONE MOUNTAIN 29" SX</span>
+                <img src="{% static 'img_tienda/bicicletas4.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 449.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - STONE MOUNTAIN 29" SX                </span>
+                <img src="{% static 'img_tienda/bicicletas5.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 449.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - AGGRESSOR 29"</span>
+                <img src="{% static 'img_tienda/bicicletas6.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 599.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - PEREGRINE 29"</span>
+                <img src="{% static 'img_tienda/bicicletas7.jpg' %}" alt="" class="img-item">
+                <span class="precio-item"> $ 649.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">BIANCHI - PEREGRINE 29"</span>
+                <img src="{% static 'img_tienda/bicicletas8.jpg' %}" alt="" class="img-item">
+                <span class="precio-item">$ 649.900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+        </div>
+
+        <!-- Carrito de Compras -->
+        <div class="carrito" id="carrito">
+            <div class="header-carrito">
+                <h2>Tu Carrito</h2>
+            </div>
+
+            <div class="carrito-item">
+
+            </div>
+            <div class="carrito-total">
+                <div class="fila">
+                    <strong>Tu Total</strong>
+                    <span class="carrito-precio-total">
+                        $120.000,00
+                    </span>
+                </div>
+                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock contenido %}  
