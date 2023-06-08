@@ -1,0 +1,102 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Formulario de contacto
+{% endblock titulo %}
+
+{% block contenido %}
+
+<main class="">
+
+
+
+
+
+
+
+  <div class="container p-4">
+    <div>
+      <p class="fs-1">Formulario de contacto Masterbikes</p>
+    </div>
+
+    <form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Juan" required>
+    <div class="valid-feedback">
+      Correcto
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="validationCustom02" placeholder="Perez" required>
+    <div class="valid-feedback">
+      Correcto
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Correo electronico</label>
+    <div class="input-group has-validation">
+
+      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required placeholder="email@ejemplo.com">
+      <div class="invalid-feedback">
+        Por favor ingrese su email.
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="mb-3">
+    <label for="msj" class="form-label">Asunto</label>
+    <textarea class="form-control" id="msj" rows="3"></textarea>
+  </div>
+  </div>
+
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Acepto la <a href="/privacidad/" class="text-decoration-none">politica de privacidad</a>
+      </label>
+      <div class="invalid-feedback">
+        Debes aceptar la politica antes de enviar
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+  </div>
+</form>
+
+
+  </div>
+
+
+
+
+
+</main>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+{% endblock contenido %}
