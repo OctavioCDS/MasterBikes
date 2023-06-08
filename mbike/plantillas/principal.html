@@ -1,7 +1,7 @@
 {% extends 'base/padre.html' %}
 {% load static  %}
 {% block titulo %}
-Principal
+Bicicletas | Masterbikes Store
 {% endblock titulo %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'Styles/principal.css' %}">
@@ -58,19 +58,124 @@ Principal
             <span class="visually-hidden">Siguiente</span>
         </button>
     </div>
-    <hr>
+    <br>
+    <!-- Sección de bicicletas y accesorios destacados -->
+    <div class="container ">
+        <h2 class="text-center">Bicicletas, Accesorios ¡y más!</h2>
+
+        <div class="container text-center">
+            <div class="row row-cols-2 ">
+                <div class="col border"><img src="https://www.oxfordstore.pe/media/catalog/product/cache/e2b750e3a1f8d67cf5cdd4eb0e9445ad/6/0/604ba2951ga185_0_1.jpg" class="img-fluid" alt="..."></div>
+                <div class="col border"><img src="https://www.oxfordstore.cl/media/catalog/product/cache/e2b750e3a1f8d67cf5cdd4eb0e9445ad/6/0/604ba2951ca185_0_1.jpg" class="img-fluid" alt="..."></div>
+                <div class="col border"><img src="https://www.oxfordstore.cl/media/catalog/product/cache/e2b750e3a1f8d67cf5cdd4eb0e9445ad/6/0/604ba2951fa185_0_1.jpg" class="img-fluid" alt="..."></div>
+                <div class="col border"><img src="https://www.oxfordstore.pe/media/catalog/product/cache/e2b750e3a1f8d67cf5cdd4eb0e9445ad/b/a/ba2751_merak_1_27.5_naranja_2022_02.jpg" class="img-fluid" alt="..."></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Sección de bicicletas y accesorios destacados -->
+
+    <br>
+    <!-- Sección accesorios bicicleta -->
+
+    <div class="container">
+        <h2>Accesorios destacados</h2>
+        <hr>
+        <h5>Encuentra accesorios e implementos de bicicleta para ciclistas profesionales. ¡Envío a todo Chile!</h5>
+        <div class="container text-center">
+  <div class="row row-cols-6">
+    <div class="col">Componentes<img src="https://www.oxfordstore.cl/media/wysiwyg/componentes.jpg" class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col">Cascos<img src="https://www.oxfordstore.cl/media/wysiwyg/casco-destacado_1.png" class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col">Luces<img src="https://www.oxfordstore.cl/media/wysiwyg/luces_1.jpg" class="rounded mx-auto d-block" alt="..."></div>
+
+    <div class="col">Protección<img src="https://www.oxfordstore.cl/media/wysiwyg/proteccion_1.jpg" class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col">Bolsos<img src="https://www.oxfordstore.cl/media/wysiwyg/bolsos_1.jpg" class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col">Ropa<img src="https://www.oxfordstore.cl/media/wysiwyg/inmentaria_1.jpg" class="rounded mx-auto d-block" alt="..."></div>
+  </div>
+</div>
+    </div>
+
+    <!-- Sección accesorios bicicleta -->
+
+    <br>
+
+
+<div>
+    <h2 class="text-center">Disfruta de mas contenido en nuestras redes sociales!</h2>
     <section class="flex divisor gif">
             <article class="">
-                <img src="{% static 'img/gif4.gif' %}" class="gif tamañogif" >
+                <a href="https://instagram.com/masterbikes">
+                    <img src="{% static 'img/gif4.gif' %}" class="gif tamañogif" >
+                </a>
             </article>
             <article class="">
-                <img src="{% static 'img/gif2.gif' %}" class=" gif tamañogif" >
+                <a href="https://instagram.com/masterbikes">
+                    <img src="{% static 'img/gif2.gif' %}" class=" gif tamañogif" >
+                </a>
             </article>
             <article class="">
-                <img src="{% static 'img/gif3.gif' %}" class="gif tamañogif" >
+                <a href="https://instagram.com/masterbikes">
+                    <img src="{% static 'img/gif3.gif' %}" class="gif tamañogif" >
+                </a>
             </article>
-
-
     </section>
+</div>
+
+
+
+
+
+
+    <div class="container p-5 " id="PreguntasFrecuentes">
+        <h2>Masterbikes: Preguntas frecuentes</h2>
+        <h6 class="fw-bolder">¡Resolvemos tus dudas! Encuentra respuesta a las consultas más comunes sobre nuestras bicicletas y accesorios.</h6>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        ¿Cómo comprar una bicicleta en Masterbikes Store?
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">El proceso de compra en Masterbikes Store es simple. Puedes explorar nuestro catálogo en línea, seleccionar la bicicleta que deseas comprar y agregarla al carrito de compras. Luego, completa los detalles de envío y realiza el pago. Una vez confirmado el pedido, procesaremos tu compra y te proporcionaremos información de seguimiento para que puedas rastrear el envío de tu bicicleta.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        ¿Cómo elegir la talla de mi bicicleta?
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Para seleccionar el tamaño correcto de bicicleta, recomendamos consultar la guía de tallas disponible en cada página de producto. Allí encontrarás información detallada sobre las medidas y dimensiones de la bicicleta que deseas, así como recomendaciones sobre la altura y la longitud de pierna adecuadas para cada tamaño. Si tienes alguna duda, nuestro equipo de atención al cliente estará encantado de ayudarte.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        ¿Cuál es la garantía de Masterbikes?
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">En Masterbikes distribuimos marcos con los más altos estándares, lo que nos permite ofrecer una garantía de por vida. Además garantizamos 12 meses para nuestros componentes mecánicos como bujes, pivotes, basculantes y culatas. Para el resto de otras partes y piezas de la bicicleta damos 3 meses de garantía.</div>
+    </div>
+  </div>
+<div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+        ¿Puedo cambiar o devolver mi pedido?
+      </button>
+    </h2>
+    <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Podrás realizar un cambio de producto nuevo en un periodo de 20 días desde la recepción del producto en caso comprar online o compras en una tienda Masterbikes. Este cambio solo se podrá hacer efectivo si el producto se encuentra nuevo, sin uso y en el empaque original.</div>
+    </div>
+  </div>
+</div>
+    </div>
+
 </main>
+
+
+
 {% endblock contenido %}
