@@ -19,28 +19,34 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import (mostrar_registro,
- Principal,
- Mantenciones,
- #Tienda
- #Tienda_articulos,
- Tienda_bicicletas,
- #Tienda_ropa,
- #Fin tienda
- mostrar_iniciar_sesion,
- cerrar_sesion)
+                    Principal,
+                    Mantenciones,
+                    privacidad,
+                    tiendas_fisicas,
+                    formulario_contacto,
+    # Tienda
+    # Tienda_articulos,
+                    Tienda_bicicletas,
+    # Tienda_ropa,
+    # Fin tienda
+                    mostrar_iniciar_sesion,
+                    cerrar_sesion)
 
 urlpatterns = [
-    path('',Principal,name='Principal'),
-    path('Mantenciones/',Mantenciones,name='Mantenciones'),
-    #Tienda
-    #path('Tienda_articulos/',Tienda_articulos,name='Tienda_articulos'),
-    path('Tienda_bicicletas/',Tienda_bicicletas,name='Tienda_bicicletas'),
-    #path('Tienda_ropa/',Tienda_ropa,name='Tienda_ropa'),
-    #Fin tienda
-    path('mostrar_registro',mostrar_registro,name='mostrar_registro'),
+    path('', Principal, name='Principal'),
+    path('Mantenciones/', Mantenciones, name='Mantenciones'),
+    # Tienda
+    # path('Tienda_articulos/',Tienda_articulos,name='Tienda_articulos'),
+    path('Tienda_bicicletas/', Tienda_bicicletas, name='Tienda_bicicletas'),
+    # path('Tienda_ropa/',Tienda_ropa,name='Tienda_ropa'),
+    # Fin tienda
+    path('mostrar_registro', mostrar_registro, name='mostrar_registro'),
     path('admin/', admin.site.urls),
-    path('mostrar_iniciar_sesion/',mostrar_iniciar_sesion,name='mostrar_iniciar_sesion'),
+    path('mostrar_iniciar_sesion/', mostrar_iniciar_sesion, name='mostrar_iniciar_sesion'),
     path('salir/', cerrar_sesion, name='cerrar_sesion'),
+    path('contacto/', formulario_contacto, name='formulario_contacto'),
+    path('privacidad/', privacidad, name='privacidad'),
+    path('tiendas/', tiendas_fisicas, name='tiendas_fisicas'),
 ]
-if settings.DEBUG == True:
+if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
