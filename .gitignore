@@ -9,6 +9,7 @@ virtual
 # Editor de texto
 
 idea
+.idea
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
