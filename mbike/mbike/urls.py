@@ -26,7 +26,7 @@ from .views import (mostrar_registro,
                     formulario_contacto,
     # Tienda
     # Tienda_articulos,
-                    Tienda_bicicletas,
+                    tienda_bicicletas,
     # Tienda_ropa,
     # Fin tienda
                     mostrar_iniciar_sesion,
@@ -37,7 +37,7 @@ urlpatterns = [
     path('Mantenciones/', Mantenciones, name='Mantenciones'),
     # Tienda
     # path('Tienda_articulos/',Tienda_articulos,name='Tienda_articulos'),
-    path('Tienda_bicicletas/', Tienda_bicicletas, name='Tienda_bicicletas'),
+    path('Tienda_bicicletas/', tienda_bicicletas, name='Tienda_bicicletas'),
     # path('Tienda_ropa/',Tienda_ropa,name='Tienda_ropa'),
     # Fin tienda
     path('mostrar_registro', mostrar_registro, name='mostrar_registro'),

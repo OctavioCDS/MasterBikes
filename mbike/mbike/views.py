@@ -20,7 +20,7 @@ def Mantenciones(request):
 # def Tienda_articulos(request):
 #    return render(request,'Tienda_articulos.html')
 
-def Tienda_bicicletas(request):
+def tienda_bicicletas(request):
     return render(request, 'Tienda_bicicletas.html')
 
 
