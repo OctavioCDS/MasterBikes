@@ -1,7 +1,8 @@
 from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm, EmailInput, FileInput, FileField, \
-    IntegerField, NumberInput, Select, DateInput, Textarea
+    IntegerField, NumberInput, Select, DateInput, Textarea, ClearableFileInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Producto
 
 
 class Registro(UserCreationForm):
@@ -62,9 +63,22 @@ class Iniciar_Sesion(Form):
     )
 
 
-from .models import Producto
-
 class FormProducto(Form):
+    def save(self, commit=True):
+        producto = Producto(
+            nombre=self.cleaned_data['nombre'],
+            descripcion=self.cleaned_data['descripcion'],
+            precio=self.cleaned_data['precio'],
+            stock=self.cleaned_data['stock'],
+            imagen=self.cleaned_data['imagen'].read(),
+            marca=self.cleaned_data['marca'],
+        )
+
+        if commit:
+            producto.save()
+
+        return producto
+
     nombre = CharField(
         required=True,
         label='Ingrese el nombre del producto',
@@ -108,10 +122,10 @@ class FormProducto(Form):
     imagen = FileField(
         required=True,
         label='Ingrese la imagen del producto',
-        widget=FileInput(
+        widget=ClearableFileInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Imagen del producto'
+                'placeholder': 'Imagen del producto',
             }
         )
     )
@@ -127,23 +141,3 @@ class FormProducto(Form):
         )
     )
 
-    def save(self):
-        data = self.cleaned_data
-        producto = Producto()
-        producto.nombre = data.get('nombre')
-        producto.descripcion = data.get('descripcion')
-        producto.precio = data.get('precio')
-        producto.stock = data.get('stock')
-        producto.imagen = data.get('imagen')
-        producto.marca = data.get('marca')
-        producto.save()
-        return producto
-
-    """
-    def clean_nombre(self):
-        nombre = self.cleaned_data['nombre']
-        existe = Producto.objects.filter(nombre__iexact=nombre).exists()
-        if existe:
-            raise forms.ValidationError('Este producto ya existe')
-        return nombre
-    """
