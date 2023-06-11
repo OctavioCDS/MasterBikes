@@ -48,7 +48,7 @@ urlpatterns = [
     path('contacto/', formulario_contacto, name='formulario_contacto'),
     path('privacidad/', privacidad, name='privacidad'),
     path('tiendas/', tiendas_fisicas, name='tiendas_fisicas'),
-    path('crear/', crear, name='crear'),
+    path('crear', crear, name='crear'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

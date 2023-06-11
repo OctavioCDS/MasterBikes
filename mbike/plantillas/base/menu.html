@@ -21,6 +21,7 @@
         <hr>
 
         <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
+        <li><a class="dropdown-item" href="{% url 'crear' %}">Agregar producto</a></li>
         <hr>
         {% if user.is_authenticated %}
         <li><a class="dropdown-item" href="{% url 'cerrar_sesion' %}">Salir</a></li>
