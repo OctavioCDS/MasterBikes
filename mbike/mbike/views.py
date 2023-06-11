@@ -3,6 +3,8 @@ from .forms import Registro, Iniciar_Sesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
+from .models import Producto
+from .forms import ProductoForm
 
 
 def Principal(request):
@@ -35,6 +37,40 @@ def privacidad(request):
 def tiendas_fisicas(request):
     return render(request, 'tiendas_fisicas.html')
 
+def Vendedor(request):
+    productos = Producto.objects.all()
+    return render(request, 'Vendedor.html', {'productos':productos})
+
+def AgregarProducto(request):
+    if request.method == "POST":
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            producto = form.save(commit=False)
+            form.save()
+        productos = Producto.objects.all()
+        return render(request,'Vendedor.html', {'productos':productos})
+    else:
+        form = ProductoForm()
+        return render(request,'Vendedor.html',{'form':form})
+
+
+def ModificarProducto(request, id):
+    producto = Producto.objects.get(id=id)
+    datos={ 
+        'form': ProductoForm(instance=producto)
+    }
+    if request.method == "POST":
+        form= ProductoForm(data=request.POST, instance=producto)
+        if form.is_valid():
+            form.save()
+        productos = Producto.objects.all()
+        return render(request,'Vendedor.html', {'productos':productos})  
+    return render(request,'Vendedor.html', datos)
+
+def EliminarProducto(request, id):
+    producto = Producto.objects.get(id=id)
+    producto.delete()
+    return render(request, 'Vendedor.html')
 
 # fin tiendas
 

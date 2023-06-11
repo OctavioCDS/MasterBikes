@@ -29,6 +29,7 @@ from .views import (mostrar_registro,
                     tienda_bicicletas,
     # Tienda_ropa,
     # Fin tienda
+                    Vendedor,
                     mostrar_iniciar_sesion,
                     cerrar_sesion)
 
@@ -47,6 +48,7 @@ urlpatterns = [
     path('contacto/', formulario_contacto, name='formulario_contacto'),
     path('privacidad/', privacidad, name='privacidad'),
     path('tiendas/', tiendas_fisicas, name='tiendas_fisicas'),
+    path('Vendedor/', Vendedor, name='Vendedor'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

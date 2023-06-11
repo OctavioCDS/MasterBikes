@@ -1,6 +1,9 @@
 from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm,EmailInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django import forms
+from .models import Producto
+
 class Registro(UserCreationForm):
     def __init__(self,*args, **kwargs):
         super().__init__(*args,**kwargs)
@@ -55,3 +58,9 @@ class Iniciar_Sesion(Form):
             }
         )
     )
+
+class ProductoForm(forms.ModelForm):
+
+    class Meta:
+        model = Producto
+        fields = ['nombre_gato', 'raza_gato']
