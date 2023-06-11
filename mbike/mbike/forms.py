@@ -109,6 +109,7 @@ class FormProducto(Form):
             }
         )
     )
+
     stock = IntegerField(
         required=True,
         label='Ingrese el stock del producto',
