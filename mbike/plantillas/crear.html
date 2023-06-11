@@ -6,9 +6,9 @@ Registrar producto
 
 {% block contenido %}
 
-<div class="container p-2">
+<div class="container p-2" >
     <h1>Registrar producto</h1>
-<form method="post" action="/crear/" >
+<form method="post" action="/crear/" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
 
