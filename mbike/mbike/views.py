@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .forms import Registro, Iniciar_Sesion
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from .forms import Registro, Iniciar_Sesion, FormProducto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
@@ -34,6 +34,19 @@ def privacidad(request):
 
 def tiendas_fisicas(request):
     return render(request, 'tiendas_fisicas.html')
+
+
+def crear(request):
+    if request.method == 'POST':
+        form = FormProducto(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('Principal')
+    else:
+        form = FormProducto()
+
+    form = FormProducto()
+    return render(request, 'crear.html', {'form': form})
 
 
 # fin tiendas

@@ -1,0 +1,20 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Registrar producto
+{% endblock titulo %}
+
+{% block contenido %}
+
+<div class="container p-2">
+    <h1>Registrar producto</h1>
+<form method="post" action="/crear/" >
+        {% csrf_token %}
+        {{form.as_p}}
+
+    <button type="submit" name="guardar" class="btn btn-dark">Agregar nuevo producto</button>
+</form>
+</div>
+
+
+{% endblock contenido %}
