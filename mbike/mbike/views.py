@@ -38,14 +38,18 @@ def tiendas_fisicas(request):
 
 def crear(request):
     if request.method == 'POST':
-        form = FormProducto(request.POST)
+        form = FormProducto(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('Principal')
+            return redirect('Principal')
+        # Para debuggear el codigo en consola
+        else:
+            for field_name, errors in form.errors.items():
+                for error in errors:
+                    print(f"Error en el campo '{field_name}': {error}")
     else:
         form = FormProducto()
 
-    form = FormProducto()
     return render(request, 'crear.html', {'form': form})
 
 
