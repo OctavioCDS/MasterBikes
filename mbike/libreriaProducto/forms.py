@@ -1,4 +1,4 @@
-from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm,EmailInput
+from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm,EmailInput,NumberInput,FileInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -62,5 +62,38 @@ class Iniciar_Sesion(Form):
 class ProductoForm(forms.ModelForm):
 
     class Meta:
-        model = Producto
-        fields = ['nombre_gato', 'raza_gato']
+       model = Producto
+       fields = ['nombre_producto', 'descripcion_producto','precio_producto','stock_producto','imagen_producto']
+       widgets = {
+            'nombre_producto': TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder':'Nombre Producto'
+                }
+            ),
+            'descripcion_producto': TextInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder':'Descripcion'
+                }
+            ),
+            'precio_producto': NumberInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder':'Precio'
+                }
+            ),
+            'stock_producto': NumberInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder':'Stock'
+                }
+            ),
+            'imagen_producto': FileInput(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder':'imagen'
+                }
+            ),
+
+        }

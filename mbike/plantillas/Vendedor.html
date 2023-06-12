@@ -6,77 +6,104 @@ Vendedor
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'bootstrap-4.6.0-dist/css/bootstrap.min.css' %}" >
+<link rel="stylesheet" href="{% static 'styles/vendedor.css' %}">
 {% endblock css %}
 
 
 {% block contenido %}
+<main id="main">
 <br>
-<br>
-<p SIZE=4>Usted aqui puede encontrar la opcion de agregar nuevos productos a la tienda</p>
-<br>
-<br>
-<a class="btn btn-primary" href="{% url 'AgregarProducto' %}" role="button">Agregar</a>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
+  Agregar Producto
+</button>
 
-        <form method="POST" action="{% url 'Filtrar' %}">
+<!-- Modal -->
+<div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body container">
+        <form method="POST" action="{% url 'Agregar' %}" enctype="multipart/form-data">
           {% csrf_token %}
-          <div class="form-group">
-            <label for="nombre_gato">Nombre</label>
-            <input type="text" class="form-control" name="nombre_gato" id="nombre_gato" aria-describedby="emailHelp">
-          </div>
-          <button type="submit" class="btn btn-primary">Fitrar</button>
-        </form>  
+          <section class="row">
+            <fieldset class="col-12">
+                <label>Nombre de Producto:</label>
+                {{ form.nombre_producto }}
+            </fieldset>
+          </section>
+          <section class="row">
+            <fieldset class="col-12">
+                <label>Descripcion de Producto:</label>
+                {{ form.descripcion_producto }}
+            </fieldset>
+          </section>
+          <section class="row">
+            <fieldset class="col-12">
+                <label>Precio de Producto:</label>
+                {{ form.precio_producto }}
+            </fieldset>
+          </section>
+          <section class="row">
+            <fieldset class="col-12">
+                <label>Stock de Producto:</label>
+                {{ form.stock_producto }}
+            </fieldset>
+          </section>
+          <section class="row">
+            <fieldset class="col-12">
+                <label>Imagen de Producto:</label>
+                {{ form.imagen_producto }}
+            </fieldset>
+          </section>
+          <hr>
+          <button type="submit" class="w-100 btn btn-success">Agregar Producto</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<section>
+  <article>
+    <table class="table table-striped" id="listagatos" >
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for g in productos %}
+          <tr>
+            <td>{{ g.id }}</td>
+            <td>{{ g.nombre_producto}}</td>
+            <td>{{ g.descripcion_producto }}</td>
+            <td>{{ g.precio_producto }}</td>
+            <td>{{ g.stock_producto }}</td>
+            <td>
+              <img src="{{ g.imagen_producto.url }}" height="100">
+            </td>
+            <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' %}">Modificar</a></td>
+            <td><a type="button" class="btn btn-secondary" href="{% url 'Eliminar' %}">Eliminar</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</section>
+</main>
 
-        <table class="table table-striped" id="listagatos" >
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Imagen</th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for p in gatos %}
-                  <tr>
-                    <td>{{ p.id }}</td>
-                    <td>{{ p.nombre_gato }}</td>
-                    <td>{{ p.descripcion }}</td>
-                    <td>{{ p.precio }}</td>
-                    <td>{{ p.stock }}</td>
-                    <td>{{ p.imagen }}</td>
-                    <td><a href="{% url 'ModificarProducto' p.id %}">Modificar</a></td>
-                    <td><a href="{% url 'EliminarProducto' p.id %}">Eliminar</a></td>
-                  </tr>
-              {% endfor %}
-          </tbody>
-        </table>
-
-
-        <button type="button" class="btn btn-primary" id="mostrar" >Mostrar</button>
-        <table class="table table-striped" id="categorias" >
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Imagen</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-<br>
-<br>
-
-
-<br>
-<br>
-<br>
-<br>
 
 
 {% endblock contenido %}

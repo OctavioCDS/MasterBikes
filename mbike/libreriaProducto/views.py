@@ -40,19 +40,20 @@ def tiendas_fisicas(request):
 def Vendedor(request):
     productos = Producto.objects.all()
     return render(request, 'Vendedor.html', {'productos':productos})
+    
 
 def AgregarProducto(request):
-    if request.method == "POST":
-        form = ProductoForm(request.POST)
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
-            producto = form.save(commit=False)
             form.save()
-        productos = Producto.objects.all()
-        return render(request,'Vendedor.html', {'productos':productos})
+            # Realizar cualquier otra acción necesaria, como mostrar un mensaje de éxito o redireccionar a otra página
+            return redirect('Vendedor')
     else:
         form = ProductoForm()
-        return render(request,'Vendedor.html',{'form':form})
-
+    
+    contexto = {'form': form}
+    return render(request, 'Vendedor.html', contexto)
 
 def ModificarProducto(request, id):
     producto = Producto.objects.get(id=id)
