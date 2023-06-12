@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from .forms import Registro, Iniciar_Sesion, FormProducto
+from django.shortcuts import render, redirect
+from .forms import Registro, Iniciar_Sesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
@@ -71,23 +71,6 @@ def EliminarProducto(request, id):
     producto = Producto.objects.get(id=id)
     producto.delete()
     return render(request, 'Vendedor.html')
-
-def crear(request):
-    if request.method == 'POST':
-        form = FormProducto(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('Principal')
-        # Para debuggear el codigo en consola
-        else:
-            for field_name, errors in form.errors.items():
-                for error in errors:
-                    print(f"Error en el campo '{field_name}': {error}")
-    else:
-        form = FormProducto()
-
-    return render(request, 'crear.html', {'form': form})
-
 
 # fin tiendas
 
