@@ -47,6 +47,7 @@ def AgregarProducto(request):
         form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            success(request,'El producto se ha agreado correctamente :D')
             # Realizar cualquier otra acción necesaria, como mostrar un mensaje de éxito o redireccionar a otra página
             return redirect('Vendedor')
     else:
@@ -57,16 +58,17 @@ def AgregarProducto(request):
 
 def ModificarProducto(request, id):
     producto = Producto.objects.get(id=id)
-    datos={ 
+    contexto={ 
         'form': ProductoForm(instance=producto)
     }
     if request.method == "POST":
         form= ProductoForm(data=request.POST, instance=producto)
         if form.is_valid():
             form.save()
+            success(request,'El producto se ha modificado correctamende:D')
         productos = Producto.objects.all()
-        return render(request,'Vendedor.html', {'productos':productos})  
-    return render(request,'Vendedor.html', datos)
+        return render(request,'Vendedor.html', {'productos':productos})   
+    return render(request,'Modificar.html', contexto)
 
 def EliminarProducto(request, id):
     producto = Producto.objects.get(id=id)
@@ -126,3 +128,7 @@ def cerrar_sesion(request):
         logout(request)
         success(request, 'Sesión cerrada')
     return redirect('Principal')
+
+def BuscarProducto(request):
+    productos = Producto.objects.filter(nombre_producto= request.POST["nombre_producto"])
+    return render(request,'Vendedor.html', {'productos':productos})

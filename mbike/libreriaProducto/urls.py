@@ -36,10 +36,11 @@ urlpatterns = [
     path('contacto/', formulario_contacto, name='formulario_contacto'),
     path('privacidad/', privacidad, name='privacidad'),
     path('tiendas/', tiendas_fisicas, name='tiendas_fisicas'),
-    path('Agregar', AgregarProducto , name="Agregar" ),
-    path('Modificar', ModificarProducto, name="Modificar"),
+    path('Agregar/', AgregarProducto , name="Agregar" ),
+    path('Modificar/<id>', ModificarProducto, name="Modificar"),
     path('Eliminar', EliminarProducto, name="Eliminar"),
     path('Vendedor/', Vendedor, name='Vendedor'),
+    path('BuscarProducto/', BuscarProducto, name="BuscarProducto"),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

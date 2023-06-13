@@ -5,7 +5,6 @@ Vendedor
 {% endblock titulo %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'bootstrap-4.6.0-dist/css/bootstrap.min.css' %}" >
 <link rel="stylesheet" href="{% static 'styles/vendedor.css' %}">
 {% endblock css %}
 
@@ -17,6 +16,7 @@ Vendedor
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregar">
   Agregar Producto
 </button>
+<a class="btn btn-success" href="{% url 'Vendedor' %}">Recargar</a>
 
 <!-- Modal -->
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,6 +61,7 @@ Vendedor
           </section>
           <hr>
           <button type="submit" class="w-100 btn btn-success">Agregar Producto</button>
+          <p>(presione una vez "agregar producto" para abrir formulario)</p>
         </form>
       </div>
       <div class="modal-footer">
@@ -70,9 +71,26 @@ Vendedor
   </div>
 </div>
 <hr>
+<section class="text-center">
+    <form  method="POST" action="{% url 'BuscarProducto' %}">
+      {% csrf_token %}
+      <div class="form-group row">
+        <fieldset class="col-6">
+            <label class="text-center">Nombre</label>
+            <input  class="form-control " name="nombre_producto" id="nombre_producto" aria-describedby="emailHelp">
+        </fieldset>
+      </div>
+      <div class="row">
+        <fieldset class="col-6">
+          <button type="submit" class=" w-100 btn btn-primary">Fitrar</button>
+        </fieldset>
+      </div>
+    </form>  
+</section>
+<hr>
 <section>
   <article>
-    <table class="table table-striped" id="listagatos" >
+    <table class="table table-striped" id="listaproductos" >
       <thead>
         <tr>
           <th scope="col">id</th>
@@ -89,12 +107,12 @@ Vendedor
             <td>{{ g.id }}</td>
             <td>{{ g.nombre_producto}}</td>
             <td>{{ g.descripcion_producto }}</td>
-            <td>{{ g.precio_producto }}</td>
+            <td>${{ g.precio_producto }}</td>
             <td>{{ g.stock_producto }}</td>
             <td>
               <img src="{{ g.imagen_producto.url }}" height="100">
             </td>
-            <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' %}">Modificar</a></td>
+            <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' g.id %}">Modificar</a></td>
             <td><a type="button" class="btn btn-secondary" href="{% url 'Eliminar' %}">Eliminar</a></td>
           </tr>
           {% endfor %}
@@ -102,9 +120,11 @@ Vendedor
     </table>
   </article>
 </section>
+
 </main>
 
 
 
 {% endblock contenido %}
+
 

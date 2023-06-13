@@ -3,6 +3,9 @@ body{
     min-height: 100vh;
     height: auto;
 }
-#main{
+.tamin{
+    width: 40%;
+}
+main{
     padding: 10px;
 }
