@@ -73,7 +73,8 @@ def ModificarProducto(request, id):
 def EliminarProducto(request, id):
     producto = Producto.objects.get(id=id)
     producto.delete()
-    return render(request, 'Vendedor.html')
+    success(request,'Producto Eliminado correctamente.. :D')
+    return redirect("Vendedor")
 
 # fin tiendas
 
