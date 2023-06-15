@@ -30,7 +30,6 @@ urlpatterns = [
     # path('Tienda_ropa/',Tienda_ropa,name='Tienda_ropa'),
     # Fin tienda
     path('mostrar_registro', mostrar_registro, name='mostrar_registro'),
-    path('admin/', admin.site.urls),
     path('mostrar_iniciar_sesion/', mostrar_iniciar_sesion, name='mostrar_iniciar_sesion'),
     path('salir/', cerrar_sesion, name='cerrar_sesion'),
     path('contacto/', formulario_contacto, name='formulario_contacto'),

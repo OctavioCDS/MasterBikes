@@ -17,10 +17,10 @@
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Inicio</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Arriendo</a></li>
         <li><a class="dropdown-item" href="{% url 'Principal' %}">Reparacion</a></li>
-        <li><a class="dropdown-item" href="{% url 'Tienda_bicicletas' %}">Tienda</a></li>
         <hr>
 
         <li><a class="dropdown-item" href="{% url 'Mantenciones' %}">Mantenciones</a></li>
+        <li><a class="dropdown-item" href="{% url 'Vendedor' %}">Tienda</a></li>
         <hr>
         {% if user.is_authenticated %}
         <li><a class="dropdown-item" href="{% url 'cerrar_sesion' %}">Salir</a></li>
