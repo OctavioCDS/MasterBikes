@@ -113,7 +113,7 @@ Vendedor
               <img src="{{ g.imagen_producto.url }}" height="100">
             </td>
             <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' g.id %}">Modificar</a></td>
-            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el producto del carrito?');" type="button" class="btn btn-secondary">Eliminar</a></td>
+            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el producto del carrito?');" type="button" class="btn btn-secondary" href="{% url 'Eliminar' g.id %}" >Eliminar</a></td>
           </tr>
           {% endfor %}
       </tbody>
