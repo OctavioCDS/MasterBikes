@@ -1,6 +1,7 @@
 # Entorno virtual python
 
 entorno
+env
 .env
 .venv
 venv
@@ -21,3 +22,8 @@ idea
 # Proyecto
 
 __pycache__/
+migrations/
+
+# Archivos de configuración
+
+mbikeSettings.json
