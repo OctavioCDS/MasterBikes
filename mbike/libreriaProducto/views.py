@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import Registro, Iniciar_Sesion
+from .forms import Registro, IniciarSesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
@@ -7,11 +7,11 @@ from .models import Producto
 from .forms import ProductoForm
 
 
-def Principal(request):
+def principal(request):
     return render(request, 'principal.html')
 
 
-def Mantenciones(request):
+def mantenciones(request):
     return render(request, 'Mantenciones.html')
 
 
@@ -37,44 +37,48 @@ def privacidad(request):
 def tiendas_fisicas(request):
     return render(request, 'tiendas_fisicas.html')
 
-def Vendedor(request):
-    productos = Producto.objects.all()
-    return render(request, 'Vendedor.html', {'productos':productos})
-    
 
-def AgregarProducto(request):
+def vendedor(request):
+    productos = Producto.objects.all()
+    return render(request, 'Vendedor.html', {'productos': productos})
+
+
+def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            success(request,'El producto se ha agreado correctamente :D')
+            success(request, 'El producto se ha agreado correctamente :D')
             # Realizar cualquier otra acción necesaria, como mostrar un mensaje de éxito o redireccionar a otra página
             return redirect('Vendedor')
     else:
         form = ProductoForm()
-    
+
     contexto = {'form': form}
     return render(request, 'Vendedor.html', contexto)
 
-def ModificarProducto(request, id):
+
+def modificar_producto(request, id):
     producto = Producto.objects.get(id=id)
-    contexto={ 
+    contexto = {
         'form': ProductoForm(instance=producto)
     }
     if request.method == "POST":
-        form= ProductoForm(data=request.POST, instance=producto)
+        form = ProductoForm(data=request.POST, instance=producto)
         if form.is_valid():
             form.save()
-            success(request,'El producto se ha modificado correctamende:D')
+            success(request, 'El producto se ha modificado correctamende:D')
         productos = Producto.objects.all()
-        return render(request,'Vendedor.html', {'productos':productos})   
-    return render(request,'Modificar.html', contexto)
+        return render(request, 'Vendedor.html', {'productos': productos})
+    return render(request, 'Modificar.html', contexto)
 
-def EliminarProducto(request, id):
+
+def eliminar_producto(request, id):
     producto = Producto.objects.get(id=id)
     producto.delete()
-    success(request,'Producto Eliminado correctamente.. :D')
+    success(request, 'Producto Eliminado correctamente.. :D')
     return redirect("Vendedor")
+
 
 # fin tiendas
 
@@ -102,11 +106,11 @@ def mostrar_iniciar_sesion(request):
     if request.method == 'GET':
         contexto = {
             'titulo': 'Bienvenido',
-            'formulario_sesion': Iniciar_Sesion()
+            'formulario_sesion': IniciarSesion()
         }
         return render(request, 'iniciar_sesion.html', contexto)
     if request.method == 'POST':
-        datos_usuario = Iniciar_Sesion(data=request.POST)
+        datos_usuario = IniciarSesion(data=request.POST)
         es_valido = datos_usuario.is_valid()
         if es_valido:
             usuario = authenticate(
@@ -130,6 +134,7 @@ def cerrar_sesion(request):
         success(request, 'Sesión cerrada')
     return redirect('Principal')
 
-def BuscarProducto(request):
-    productos = Producto.objects.filter(nombre_producto= request.POST["nombre_producto"])
-    return render(request,'Vendedor.html', {'productos':productos})
+
+def buscar_producto(request):
+    productos = Producto.objects.filter(nombre_producto=request.POST["nombre_producto"])
+    return render(request, 'Vendedor.html', {'productos': productos})
