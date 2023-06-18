@@ -7,4 +7,42 @@ Formularios
 {% block contenido %}
 
 
+<div class="container align-items-center p-3">
+    <h1 class="p-3" style="text-align: center">Formularios y solicitudes</h1>
+   <div class="container text-center">
+  <div class="row">
+    <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Solicitud de reparación</h5>
+    <p class="card-text">Rellena un formulario y nos comunicaremos contigo lo antes posible.</p>
+    <a href="{% url 'Cliente' %}" class="btn btn-dark">Hacer solicitud</a>
+  </div>
+</div>
+    </div>
+    <div class="col">
+
+<div class="card text-center mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Solicitud de mantención</h5>
+    <p class="card-text">Rellena un formulario y nos comunicaremos contigo lo antes posible.</p>
+    <a href="#" class="btn btn-dark">Hacer solicitud</a>
+  </div>
+</div>
+    </div>
+    <div class="col">
+        <div class="card text-center mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Formulario de contacto</h5>
+    <p class="card-text">Rellena un formulario y nos comunicaremos contigo lo antes posible.</p>
+    <a href="{% url 'formulario_contacto' %}" class="btn btn-dark">Ponerse en contacto</a>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
 {% endblock contenido %}
