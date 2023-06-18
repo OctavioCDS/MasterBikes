@@ -106,55 +106,48 @@ class ReparacionForm(forms.ModelForm):
     class Meta:
         model = Reparacion
         fields = ['nombre_cliente', 'email_cliente', 'rut_cliente', 'asunto', 'descripcion',
-                  'marca_bicicleta', 'modelo_bicicleta', 'fecha_ingreso']
+                  'marca_bicicleta', 'modelo_bicicleta']
         widgets = {
             'nombre_cliente': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Nombre'
+                    'placeholder': 'Tu nombre aquí'
                 }
             ),
             'email_cliente': EmailInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Email'
+                    'placeholder': 'email@ejemplo.com'
                 }
             ),
-            'rut_cliente': NumberInput(
+            'rut_cliente': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Rut '
+                    'placeholder': '00.000.000-0'
                 }
             ),
             'asunto': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Asunto'
+                    'placeholder': 'Cual es tu problema'
                 }
             ),
             'descripcion': TextInput(
                 attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Descripcion'
+                    'class': 'form-control text-area',
+                    'placeholder': 'Describe con detalle el problema'
                 }
             ),
             'marca_bicicleta': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Marca Bicicleta'
+                    'placeholder': 'La marca de tu bicicleta'
                 }
             ),
             'modelo_bicicleta': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Modelo Bicicleta'
+                    'placeholder': 'El modelo de tu bicicleta'
                 }
-            ),
-            'fecha_ingreso': TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Fecha Ingreso'
-                }
-            ),
+            )
         }
-
