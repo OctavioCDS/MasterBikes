@@ -23,7 +23,10 @@ urlpatterns = [
                   path('Vendedor/', vendedor, name='Vendedor'),
                   path('BuscarProducto/', buscar_producto, name="BuscarProducto"),
                   path('Cliente', guardar_formulario_reparacion, name='Cliente'),
-                  path('Reparaciones/', reparaciones, name='Reparaciones'),
+                  path('Reparaciones', reparaciones, name='Reparaciones'),
+                  path('formularios', formularios, name='Formularios'),
+                  path('EliminarReparacion/<id>', eliminar_solicitud_reparacion, name="EliminarReparacion"),
+                  path('BuscarReparacion/', buscar_solicitud_reparacion, name="BuscarReparacion"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
