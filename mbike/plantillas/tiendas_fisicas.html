@@ -4,7 +4,43 @@
 Nuestras tiendas
 {% endblock titulo %}
 
+
+
+{% block css %}
+<style>
+    #map {
+        width: 100%;
+        height: 600px;
+    }
+</style>
+{% endblock css %}
+
+
+
 {% block contenido %}
 
+<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+<div class="container">
+<div id="map"></div>
+</div>
+        <script>
+        mapkit.init({
+            authorizationCallback: function(done) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/services/jwt");
+                xhr.addEventListener("load", function() {
+                    done(this.responseText);
+                });
+                xhr.send();
+            }
+        });
+
+        var Cupertino = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(37.3316850890998, -122.030067374026),
+            new mapkit.CoordinateSpan(0.167647972, 0.354985255)
+        );
+        var map = new mapkit.Map("map");
+        map.region = Cupertino;
+        </script>
 
 {% endblock contenido %}
