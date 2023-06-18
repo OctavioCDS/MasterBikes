@@ -1,0 +1,61 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Masterbikes | Administrar reparaciones
+{% endblock titulo %}
+
+{% block css %}
+{% endblock css %}
+
+
+{% block contenido %}
+
+<main id="main">
+
+<div class="container p-3">
+<section>
+  <h1>Administrar solicitudes de reparacion</h1>
+  <a class="btn btn-success" href="{% url 'Reparaciones' %}">Recargar</a>
+  <article>
+    <table class="table table-striped" id="listaproductos" >
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+            <th scope="col">nombre_cliente</th>
+            <th scope="col">email_cliente</th>
+            <th scope="col">rut_cliente</th>
+            <th scope="col">asunto</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">marca_bicicleta</th>
+            <th scope="col">modelo_bicicleta</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in reparaciones %}
+          <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.nombre_cliente}}</td>
+            <td>{{ i.email_cliente}}</td>
+            <td>{{ i.rut_cliente}}</td>
+            <td>{{ i.asunto}}</td>
+            <td>{{ i.descripcion}}</td>
+            <td>{{ i.marca_bicicleta}}</td>
+            <td>{{ i.modelo_bicicleta}}</td>
+            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar esta solicitud?');" type="button" class="btn btn-secondary" href="{% url 'EliminarReparacion' i.id %}" >Eliminar</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</section>
+</div>
+
+
+
+</main>
+
+
+
+{% endblock contenido %}
+
+

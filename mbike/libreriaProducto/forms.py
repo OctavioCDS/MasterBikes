@@ -2,7 +2,7 @@ from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm, E
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Producto
+from .models import Producto, Reparacion
 
 
 class Registro(UserCreationForm):
@@ -99,4 +99,55 @@ class ProductoForm(forms.ModelForm):
                 }
             ),
 
+        }
+
+
+class ReparacionForm(forms.ModelForm):
+    class Meta:
+        model = Reparacion
+        fields = ['nombre_cliente', 'email_cliente', 'rut_cliente', 'asunto', 'descripcion',
+                  'marca_bicicleta', 'modelo_bicicleta']
+        widgets = {
+            'nombre_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Tu nombre aquí'
+                }
+            ),
+            'email_cliente': EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'email@ejemplo.com'
+                }
+            ),
+            'rut_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': '00.000.000-0'
+                }
+            ),
+            'asunto': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Cual es tu problema'
+                }
+            ),
+            'descripcion': TextInput(
+                attrs={
+                    'class': 'form-control text-area',
+                    'placeholder': 'Describe con detalle el problema'
+                }
+            ),
+            'marca_bicicleta': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'La marca de tu bicicleta'
+                }
+            ),
+            'modelo_bicicleta': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'El modelo de tu bicicleta'
+                }
+            )
         }

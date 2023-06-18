@@ -3,8 +3,8 @@ from .forms import Registro, IniciarSesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
-from .models import Producto
-from .forms import ProductoForm
+from .models import Producto, Reparacion
+from .forms import ProductoForm, ReparacionForm
 
 
 def principal(request):
@@ -30,6 +30,10 @@ def formulario_contacto(request):
     return render(request, 'formulario_contacto.html')
 
 
+def formularios(request):
+    return render(request, 'formularios.html')
+
+
 def privacidad(request):
     return render(request, 'privacidad.html')
 
@@ -41,6 +45,11 @@ def tiendas_fisicas(request):
 def vendedor(request):
     productos = Producto.objects.all()
     return render(request, 'Vendedor.html', {'productos': productos})
+
+
+def reparaciones(request):
+    solicitudes = Reparacion.objects.all()
+    return render(request, 'Reparaciones.html', {'reparaciones': solicitudes})
 
 
 def agregar_producto(request):
@@ -138,3 +147,42 @@ def cerrar_sesion(request):
 def buscar_producto(request):
     productos = Producto.objects.filter(nombre_producto=request.POST["nombre_producto"])
     return render(request, 'Vendedor.html', {'productos': productos})
+
+
+# Funciones - Formulario de reparacion
+
+def guardar_formulario_reparacion(request):
+    if request.method == 'POST':
+        formulario = ReparacionForm(request.POST)
+        print(formulario)
+        print('Form reparacion')
+        if formulario.is_valid():
+            print('Valid')
+            formulario.save()
+            success(request, 'Se ha enviado su solicitud')
+            return redirect('Cliente')
+        else:
+            print('form not valid')
+    else:
+        print('not a post request')
+        formulario = ReparacionForm()
+    print('end form')
+    return render(request, 'Cliente.html', {'formulario': formulario})
+
+
+def eliminar_solicitud_reparacion(request, id):
+    reparacion = Reparacion.objects.get(id=id)
+    reparacion.delete()
+    success(request, 'Se elimino su solicitud')
+    return redirect("Cliente")
+
+
+def buscar_solicitud_reparacion(request):
+    if request.method == 'POST':
+        rut_cliente = request.POST.get('rut_cliente')
+
+        reparacion = Reparacion.objects.filter(rut_cliente=rut_cliente)
+
+        return render(request, 'Cliente.html', {'reparacion': reparacion})
+
+    return render(request, 'Cliente.html')
