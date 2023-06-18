@@ -30,6 +30,10 @@ def formulario_contacto(request):
     return render(request, 'formulario_contacto.html')
 
 
+def formularios(request):
+    return render(request, 'formularios.html')
+
+
 def privacidad(request):
     return render(request, 'privacidad.html')
 
@@ -145,14 +149,40 @@ def buscar_producto(request):
     return render(request, 'Vendedor.html', {'productos': productos})
 
 
+# Funciones - Formulario de reparacion
+
 def guardar_formulario_reparacion(request):
     if request.method == 'POST':
         formulario = ReparacionForm(request.POST)
+        print(formulario)
+        print('Form reparacion')
         if formulario.is_valid():
+            print('Valid')
             formulario.save()
-            success(request, 'Se ha guardado su solicitud')
-            return redirect('Principal')
+            success(request, 'Se ha enviado su solicitud')
+            return redirect('Cliente')
+        else:
+            print('form not valid')
     else:
+        print('not a post request')
         formulario = ReparacionForm()
+    print('end form')
     return render(request, 'Cliente.html', {'formulario': formulario})
 
+
+def eliminar_solicitud_reparacion(request, id):
+    reparacion = Reparacion.objects.get(id=id)
+    reparacion.delete()
+    success(request, 'Se elimino su solicitud')
+    return redirect("Cliente")
+
+
+def buscar_solicitud_reparacion(request):
+    if request.method == 'POST':
+        rut_cliente = request.POST.get('rut_cliente')
+
+        reparacion = Reparacion.objects.filter(rut_cliente=rut_cliente)
+
+        return render(request, 'Cliente.html', {'reparacion': reparacion})
+
+    return render(request, 'Cliente.html')
