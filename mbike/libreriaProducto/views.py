@@ -3,8 +3,8 @@ from .forms import Registro, IniciarSesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
-from .models import Producto
-from .forms import ProductoForm
+from .models import Producto, Reparacion
+from .forms import ProductoForm, ReparacionForm
 
 
 def principal(request):
@@ -41,6 +41,11 @@ def tiendas_fisicas(request):
 def vendedor(request):
     productos = Producto.objects.all()
     return render(request, 'Vendedor.html', {'productos': productos})
+
+
+def reparaciones(request):
+    solicitudes = Reparacion.objects.all()
+    return render(request, 'Reparaciones.html', {'reparaciones': solicitudes})
 
 
 def agregar_producto(request):
@@ -138,3 +143,16 @@ def cerrar_sesion(request):
 def buscar_producto(request):
     productos = Producto.objects.filter(nombre_producto=request.POST["nombre_producto"])
     return render(request, 'Vendedor.html', {'productos': productos})
+
+
+def guardar_formulario_reparacion(request):
+    if request.method == 'POST':
+        formulario = ReparacionForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            success(request, 'Se ha guardado su solicitud')
+            return redirect('Principal')
+    else:
+        formulario = ReparacionForm()
+    return render(request, 'Cliente.html', {'formulario': formulario})
+

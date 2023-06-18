@@ -1,0 +1,66 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Cliente
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/cliente.css' %}">
+{% endblock css %}
+{% block contenido %}
+
+<br>
+<div class="container">
+
+<h1>Formulario de solicitud de reparación</h1>
+<form method="post" action="{% url 'Cliente' %}">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" value="{{ form.nombre_cliente }}">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput2">Correo electronico</label>
+        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Correo electronico" value="{{ form.email_cliente }}">
+    </div>
+
+    <div class="form-group">
+        <label for="rut">Rut</label>
+        <input type="text" class="form-control" id="rut" placeholder="Rut" value="{{ form.rut_cliente }}">
+    </div>
+
+    <div class="form-group">
+        <label for="asunto">Asunto</label>
+        <input type="text" class="form-control" id="asunto" placeholder="Asunto" value="{{ form.asunto }}">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Descripcion de la solicitud</label>
+        <input type="text" class="text-area" id="exampleFormControlTextarea1" placeholder="Descripcion de la solicitud" value="{{ form.descripcion }}">
+    </div>
+
+    <div class="form-group">
+        <label for="marcaBicicleta">Marca de la bicicleta</label>
+        <input type="text" class="form-control" id="marcaBicicleta" placeholder="Marca de la bicicleta" value="{{ form.marca_bicicleta }}">
+    </div>
+
+    <div class="form-group">
+        <label for="modeloBicicleta">Modelo de la bicicleta</label>
+        <input type="text" class="form-control" id="modeloBicicleta" placeholder="Modelo de la bicicleta" value="{{ form.modelo_bicicleta }}">
+    </div>
+
+    <div class="form-group">
+        <label for="fechaIngreso">Fecha de ingreso</label>
+        <input type="date" class="form-control" id="fechaIngreso" placeholder="Fecha de ingreso" value="{{ form.fecha_ingreso }}">
+    </div>
+
+
+    <br>
+  <button type="submit" class="w-100 btn btn-success">Enviar solicitud</button>
+</form>
+</div>
+<br>
+
+{% endblock contenido %}

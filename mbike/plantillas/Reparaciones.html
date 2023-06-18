@@ -1,0 +1,65 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Reparaciones
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/vendedor.css' %}">
+{% endblock css %}
+
+
+{% block contenido %}
+
+<main id="main">
+<br>
+
+<a class="btn btn-success" href="{% url 'Reparaciones' %}">Recargar</a>
+
+
+<section>
+  <article>
+    <table class="table table-striped" id="listaproductos" >
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+            <th scope="col">nombre_cliente</th>
+            <th scope="col">email_cliente</th>
+            <th scope="col">rut_cliente</th>
+            <th scope="col">asunto</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">marca_bicicleta</th>
+            <th scope="col">modelo_bicicleta</th>
+            <th scope="col">fecha_ingreso</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in reparaciones %}
+          <tr>
+
+            <td>{{ i.id }}</td>
+            <td>{{ i.nombre_cliente}}</td>
+            <td>{{ i.email_cliente}}</td>
+            <td>{{ i.rut_cliente}}</td>
+            <td>{{ i.asunto}}</td>
+            <td>{{ i.descripcion}}</td>
+            <td>{{ i.marca_bicicleta}}</td>
+            <td>{{ i.modelo_bicicleta}}</td>
+            <td>{{ i.fecha_ingreso}}</td>
+
+            <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' g.id %}">Modificar</a></td>
+            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el producto del carrito?');" type="button" class="btn btn-secondary" href="{% url 'Eliminar' g.id %}" >Eliminar</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</section>
+
+</main>
+
+
+
+{% endblock contenido %}
+
+

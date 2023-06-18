@@ -22,6 +22,8 @@ urlpatterns = [
                   path('Eliminar/<id>', eliminar_producto, name="Eliminar"),
                   path('Vendedor/', vendedor, name='Vendedor'),
                   path('BuscarProducto/', buscar_producto, name="BuscarProducto"),
+                  path('Cliente', guardar_formulario_reparacion, name='Cliente'),
+                  path('Reparaciones/', reparaciones, name='Reparaciones'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

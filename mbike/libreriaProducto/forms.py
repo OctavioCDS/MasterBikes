@@ -2,7 +2,7 @@ from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm, E
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Producto
+from .models import Producto, Reparacion
 
 
 class Registro(UserCreationForm):
@@ -100,3 +100,61 @@ class ProductoForm(forms.ModelForm):
             ),
 
         }
+
+
+class ReparacionForm(forms.ModelForm):
+    class Meta:
+        model = Reparacion
+        fields = ['nombre_cliente', 'email_cliente', 'rut_cliente', 'asunto', 'descripcion',
+                  'marca_bicicleta', 'modelo_bicicleta', 'fecha_ingreso']
+        widgets = {
+            'nombre_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Nombre'
+                }
+            ),
+            'email_cliente': EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Email'
+                }
+            ),
+            'rut_cliente': NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Rut '
+                }
+            ),
+            'asunto': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Asunto'
+                }
+            ),
+            'descripcion': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Descripcion'
+                }
+            ),
+            'marca_bicicleta': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Marca Bicicleta'
+                }
+            ),
+            'modelo_bicicleta': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Modelo Bicicleta'
+                }
+            ),
+            'fecha_ingreso': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Fecha Ingreso'
+                }
+            ),
+        }
+
