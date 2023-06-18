@@ -110,7 +110,7 @@ Vendedor
             <td>${{ g.precio_producto }}</td>
             <td>{{ g.stock_producto }}</td>
             <td>
-              <img src="{{ g.imagen_producto.url }}" height="100">
+              <img src="{{ g.imagen_producto.url }}" height="100" alt="Imagen del producto">
             </td>
             <td><a type="button" class="btn btn-secondary" href="{% url 'Modificar' g.id %}">Modificar</a></td>
             <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar el producto del carrito?');" type="button" class="btn btn-secondary" href="{% url 'Eliminar' g.id %}" >Eliminar</a></td>
