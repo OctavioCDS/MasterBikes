@@ -22,7 +22,7 @@ class Reparacion(models.Model):
     descripcion = models.TextField()
     marca_bicicleta = models.CharField(max_length=100)
     modelo_bicicleta = models.CharField(max_length=150)
-    fecha_ingreso = models.DateField()
+    # fecha_ingreso = models.DateField()
 
     def __str__(self):
         detalle = "Nombre: " + str(self.nombre_cliente) + ", " + "Asunto: " + str(self.asunto)
