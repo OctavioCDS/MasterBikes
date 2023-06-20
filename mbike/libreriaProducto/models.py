@@ -28,3 +28,12 @@ class Reparacion(models.Model):
         detalle = "Nombre: " + str(self.nombre_cliente) + ", " + "Asunto: " + str(self.asunto)
         return detalle
 
+class Arriendo(models.Model):
+    nombre_cliente = models.CharField(max_length=200)
+    apellido_cliente = models.CharField(max_length=200)
+    rut_cliente = models.CharField(max_length=9)
+    telefono_cliente = models.IntegerField()
+    cantidad_dias_arriendo = models.IntegerField()
+    fecha_inicio_arriendo = models.DateField()
+    modelo_bicicleta = models.CharField(max_length=150)
+    descripcion_de_uso = models.TextField()

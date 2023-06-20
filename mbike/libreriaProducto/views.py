@@ -51,6 +51,9 @@ def reparaciones(request):
     solicitudes = Reparacion.objects.all()
     return render(request, 'Reparaciones.html', {'reparaciones': solicitudes})
 
+def arriendo(request):
+    return render(request, 'Arriendo.html')
+
 
 def agregar_producto(request):
     if request.method == 'POST':
@@ -186,3 +189,23 @@ def buscar_solicitud_reparacion(request):
         return render(request, 'Cliente.html', {'reparacion': reparacion})
 
     return render(request, 'Cliente.html')
+
+# Arriendo
+
+def guardar_arriendo(request):
+    if request.method == 'POST':
+        formulario_arriendo = ArriendoForm(request.POST)
+        print(formulario_arriendo)
+        print('Form reparacion')
+        if formulario_arriendo.is_valid():
+            print('Valid')
+            formulario_arriendo.save()
+            success(request, 'Se ha enviado su solicitud')
+            return redirect('Arriendo')
+        else:
+            print('form not valid')
+    else:
+        print('not a post request')
+        formulario_arriendo = ArriendoForm()
+    print('end form')
+    return render(request, 'Arriendo.html', {'formulario_arriendo': formulario_arriendo})

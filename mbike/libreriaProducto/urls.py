@@ -24,6 +24,7 @@ urlpatterns = [
                   path('BuscarProducto/', buscar_producto, name="BuscarProducto"),
                   path('Cliente', guardar_formulario_reparacion, name='Cliente'),
                   path('Reparaciones', reparaciones, name='Reparaciones'),
+                  path('Arriendo', arriendo, name='Arriendo'),
                   path('formularios', formularios, name='Formularios'),
                   path('EliminarReparacion/<id>', eliminar_solicitud_reparacion, name="EliminarReparacion"),
                   path('BuscarReparacion/', buscar_solicitud_reparacion, name="BuscarReparacion"),

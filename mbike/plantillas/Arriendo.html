@@ -1,0 +1,67 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Masterbikes | Solicitud de reparación
+{% endblock titulo %}
+
+{% block css %}
+{% endblock css %}
+
+{% block contenido %}
+<div class="container p-3">
+    <div class="row">
+      <div class="col-8">
+          <div class="container">
+  <h1>Formulario de solicitud de reparación</h1>
+  <form method="post" action="{% url 'Arriendo' %}">
+      {% csrf_token %}
+      {{ formulario_arriendo.as_p }}
+    <button type="submit" class="w-100 btn btn-success">Enviar solicitud</button>
+  </form>
+  </div>
+      </div>
+      <div class="col-4">
+          <h1>Buscar solicitud</h1>
+          <br>
+  <form method="POST" action="{% url 'BuscarReparacion' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+          <label for="rut_cliente" class="form-label">Rut/Run:</label>
+          <input type="text" class="form-control" name="rut_cliente" id="rut_cliente" aria-describedby="rutHelp">
+      <div id="rutHelp" class="form-text">Ingresa tu rut para buscar una solicitud.</div>
+      </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+      </form>
+          <hr>
+          <h2>Tu solicitud:</h2>
+          <br>
+          <section>
+            <article>
+              <table class="table table-striped" id="solicitudes" >
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Asunto</th>
+                    <th scope="col">Descripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in reparacion %}
+                    <tr>
+                      <td>{{ i.nombre_cliente }}</td>
+                      <td>{{ i.asunto}}</td>
+                      <td>{{ i.descripcion }}</td>
+                      <td>
+                          <a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas cancelar tu solicitud?');"
+                             type="button" class="btn btn-secondary" href="{% url 'EliminarReparacion' i.id %}" >Cancelar</a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </article>
+          </section>
+      </div>
+    </div>
+  </div>
+  {% endblock contenido %}

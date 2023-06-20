@@ -1,8 +1,8 @@
-from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm, EmailInput, NumberInput, FileInput
+from django.forms import Form, CharField, TextInput, PasswordInput, ModelForm, EmailInput, NumberInput, FileInput, DateInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Producto, Reparacion
+from .models import Producto, Reparacion, Arriendo
 
 
 class Registro(UserCreationForm):
@@ -148,6 +148,61 @@ class ReparacionForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'El modelo de tu bicicleta'
+                }
+            )
+        }
+
+class ArriendoForm(forms.ModelForm):
+    class Meta:
+        model = Arriendo
+        fields = ['nombre_cliente', 'apellido_cliente', 'rut_cliente', 'telefono_cliente', 'cantidad_dias_arriendo',
+                  'fecha_inicio_arriendo', 'modelo_bicicleta', 'descripcion_de_uso']
+        widgets = {
+            'nombre_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su nombre'
+                }
+            ),
+            'apellido_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su apellido'
+                }
+            ),
+            'rut_cliente': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': '00.000.000-0'
+                }
+            ),
+            'telefono_cliente': NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su número de telefono'
+                }
+            ),
+            'cantidad_dias_arriendo': TextInput(
+                attrs={
+                    'class': 'form-control text-area',
+                    'placeholder': 'Ingrese la cantidad de días que desea arrendar'
+                }
+            ),
+            'fecha_inicio_arriendo': DateInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'marca_bicicleta': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese la marca de la bicicleta'
+                }
+            ),
+            'descripcion_de_uso': TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Describa el uso que dará a la bicicleta arrendada'
                 }
             )
         }
