@@ -28,6 +28,7 @@ urlpatterns = [
                   path('formularios', formularios, name='Formularios'),
                   path('EliminarReparacion/<id>', eliminar_solicitud_reparacion, name="EliminarReparacion"),
                   path('BuscarReparacion/', buscar_solicitud_reparacion, name="BuscarReparacion"),
+                  path('LReparaciones/', LReparaciones, name="LReparaciones"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

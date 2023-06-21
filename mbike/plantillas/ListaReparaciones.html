@@ -1,0 +1,75 @@
+{% extends 'base/padre.html' %}
+{% load static  %}
+{% block titulo %}
+Lista de Reparaciones
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/vendedor.css' %}">
+{% endblock css %}
+
+
+{% block contenido %}
+<main id="main">
+<h1 class="text-center">Lista de Reparaciones</h1>
+<br>
+<!-- Button trigger modal -->
+<a class="btn btn-success" href="{% url 'LReparaciones' %}">Recargar</a>
+
+<hr>
+<section class="text-center">
+    <form  method="POST" action="{% url 'BuscarProducto' %}">
+      {% csrf_token %}
+      <div class="form-group row">
+        <fieldset class="col-6">
+            <label class="text-center">Nombre</label>
+            <input  class="form-control " name="nombre_producto" id="nombre_producto" aria-describedby="emailHelp">
+        </fieldset>
+      </div>
+      <div class="row">
+        <fieldset class="col-6">
+          <button type="submit" class=" w-100 btn btn-primary">Fitrar</button>
+        </fieldset>
+      </div>
+    </form>  
+</section>
+<hr>
+<section>
+  <article>
+    <table class="table table-striped" id="listaproductos" >
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nombre Cliente</th>
+          <th scope="col">Email</th>
+          <th scope="col">Rut</th>
+          <th scope="col">Asunto</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Marca Bicicleta</th>
+          <th scope="col">Modelo Bicicleta</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for g in reparaciones %}
+          <tr>
+            <td>{{ g.id }}</td>
+            <td>{{ g.nombre_cliente}}</td>
+            <td>{{ g.email_cliente }}</td>
+            <td>{{ g.rut_cliente }}</td>
+            <td>{{ g.asunto }}</td>
+            <td>{{ g.descripciono }}</td>
+            <td>{{ g.marca_bicicleta }}</td>
+            <td>{{ g.marca_bicicleta }}</td>
+            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar la solicitud?');" type="button" class="btn btn-secondary" href="{% url 'EliminarReparacion' g.id %}" >Eliminar</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</section>
+
+</main>
+
+
+
+{% endblock contenido %}

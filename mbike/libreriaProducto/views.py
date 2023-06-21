@@ -209,3 +209,6 @@ def guardar_arriendo(request):
         formulario_arriendo = ArriendoForm()
     print('end form')
     return render(request, 'Arriendo.html', {'formulario_arriendo': formulario_arriendo})
+def LReparaciones(request):
+    reparaciones = Reparacion.objects.all()
+    return render(request, 'ListaReparaciones.html', {'reparaciones': reparaciones})
