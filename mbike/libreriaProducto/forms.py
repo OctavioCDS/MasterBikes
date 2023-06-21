@@ -155,8 +155,7 @@ class ReparacionForm(forms.ModelForm):
 class ArriendoForm(forms.ModelForm):
     class Meta:
         model = Arriendo
-        fields = ['nombre_cliente', 'apellido_cliente', 'rut_cliente', 'telefono_cliente', 'cantidad_dias_arriendo',
-                  'fecha_inicio_arriendo', 'modelo_bicicleta', 'descripcion_de_uso']
+        fields = ['nombre_cliente', 'apellido_cliente', 'rut_cliente', 'telefono_cliente', 'cantidad_dias_arriendo', 'modelo_bicicleta', 'descripcion_de_uso']
         widgets = {
             'nombre_cliente': TextInput(
                 attrs={
@@ -173,10 +172,10 @@ class ArriendoForm(forms.ModelForm):
             'rut_cliente': TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': '00.000.000-0'
+                    'placeholder': '00000000-0'
                 }
             ),
-            'telefono_cliente': NumberInput(
+            'telefono_cliente': TextInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Ingrese su número de telefono'
@@ -186,11 +185,6 @@ class ArriendoForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control text-area',
                     'placeholder': 'Ingrese la cantidad de días que desea arrendar'
-                }
-            ),
-            'fecha_inicio_arriendo': DateInput(
-                attrs={
-                    'class': 'form-control',
                 }
             ),
             'marca_bicicleta': TextInput(

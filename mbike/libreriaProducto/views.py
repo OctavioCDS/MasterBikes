@@ -3,8 +3,8 @@ from .forms import Registro, IniciarSesion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from sweetify import info, success, warning, error
-from .models import Producto, Reparacion
-from .forms import ProductoForm, ReparacionForm
+from .models import Producto, Reparacion, Arriendo
+from .forms import ProductoForm, ReparacionForm,ArriendoForm
 
 
 def principal(request):
@@ -192,13 +192,13 @@ def buscar_solicitud_reparacion(request):
 
 # Arriendo
 
-def guardar_arriendo(request):
+def agregar_arriendo(request):
     if request.method == 'POST':
         formulario_arriendo = ArriendoForm(request.POST)
         print(formulario_arriendo)
-        print('Form reparacion')
+
         if formulario_arriendo.is_valid():
-            print('Valid')
+            print('Valido')
             formulario_arriendo.save()
             success(request, 'Se ha enviado su solicitud')
             return redirect('Arriendo')
@@ -206,6 +206,24 @@ def guardar_arriendo(request):
             print('form not valid')
     else:
         print('not a post request')
-        formulario_arriendo = ArriendoForm()
+        formulario_arriendo = ReparacionForm()
     print('end form')
     return render(request, 'Arriendo.html', {'formulario_arriendo': formulario_arriendo})
+
+def eliminar_solicitud_arriendo(request, id):
+    arriendo = Arriendo.objects.get(id=id)
+    arriendo.delete()
+    success(request, 'Se elimino su solicitud')
+    return redirect("Cliente")
+
+
+def buscar_solicitud_arriendo(request):
+    if request.method == 'POST':
+        rut_cliente = request.POST.get('rut_cliente')
+
+        arriendo = Arriendo.objects.filter(rut_cliente=rut_cliente)
+
+        return render(request, 'Arriendo.html', {'arriendo': arriendo})
+
+    return render(request, 'Cliente.html')
+

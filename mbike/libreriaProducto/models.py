@@ -29,11 +29,11 @@ class Reparacion(models.Model):
         return detalle
 
 class Arriendo(models.Model):
-    nombre_cliente = models.CharField(max_length=200)
-    apellido_cliente = models.CharField(max_length=200)
-    rut_cliente = models.CharField(max_length=9)
-    telefono_cliente = models.IntegerField()
-    cantidad_dias_arriendo = models.IntegerField()
-    fecha_inicio_arriendo = models.DateField()
-    modelo_bicicleta = models.CharField(max_length=150)
-    descripcion_de_uso = models.TextField()
+    nombre_cliente = models.CharField(max_length=200,null = False)
+    apellido_cliente = models.CharField(max_length=200,null = False)
+    rut_cliente = models.CharField(max_length=10,null = False)
+    telefono_cliente = models.CharField(max_length=9, null = False)
+    cantidad_dias_arriendo = models.IntegerField(null = False)
+    fecha_inicio_arriendo = models.DateField(auto_now_add = True)
+    modelo_bicicleta = models.CharField(max_length=150,null = False)
+    descripcion_de_uso = models.TextField(null = False)
