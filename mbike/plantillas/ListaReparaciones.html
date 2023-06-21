@@ -18,12 +18,12 @@ Lista de Reparaciones
 
 <hr>
 <section class="text-center">
-    <form  method="POST" action="{% url 'BuscarProducto' %}">
+    <form  method="POST" action="{% url 'BuscarLReparacion' %}">
       {% csrf_token %}
       <div class="form-group row">
         <fieldset class="col-6">
-            <label class="text-center">Nombre</label>
-            <input  class="form-control " name="nombre_producto" id="nombre_producto" aria-describedby="emailHelp">
+            <label class="text-center">Nombre cliente</label>
+            <input  class="form-control " name="nombre_cliente" id="nombre_cliente" aria-describedby="emailHelp">
         </fieldset>
       </div>
       <div class="row">
@@ -57,10 +57,10 @@ Lista de Reparaciones
             <td>{{ g.email_cliente }}</td>
             <td>{{ g.rut_cliente }}</td>
             <td>{{ g.asunto }}</td>
-            <td>{{ g.descripciono }}</td>
+            <td>{{ g.descripcion }}</td>
             <td>{{ g.marca_bicicleta }}</td>
             <td>{{ g.marca_bicicleta }}</td>
-            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar la solicitud?');" type="button" class="btn btn-secondary" href="{% url 'EliminarReparacion' g.id %}" >Eliminar</a></td>
+            <td><a id="confirmar_eliminar" onclick="return confirm('¿Estás seguro que deseas eliminar la solicitud?');" type="button" class="btn btn-secondary" href="{% url 'EliminarLReparacion' g.id %}" >Eliminar</a></td>
           </tr>
           {% endfor %}
       </tbody>

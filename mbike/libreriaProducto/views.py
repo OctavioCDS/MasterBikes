@@ -230,3 +230,11 @@ def buscar_solicitud_arriendo(request):
 def LReparaciones(request):
     reparaciones = Reparacion.objects.all()
     return render(request, 'ListaReparaciones.html', {'reparaciones': reparaciones})
+def BuscarReparacion(request):
+    reparaciones = Reparacion.objects.filter(nombre_cliente=request.POST["nombre_cliente"])
+    return render(request, 'ListaReparaciones.html', {'reparaciones': reparaciones})
+def EliminarLReparacion(request, id):
+    reparacion = Reparacion.objects.get(id=id)
+    reparacion.delete()
+    success(request, 'Reparacion Eliminada correctamente.. :D')
+    return redirect("LReparaciones")
