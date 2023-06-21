@@ -227,3 +227,6 @@ def buscar_solicitud_arriendo(request):
 
     return render(request, 'Cliente.html')
 
+def LReparaciones(request):
+    reparaciones = Reparacion.objects.all()
+    return render(request, 'ListaReparaciones.html', {'reparaciones': reparaciones})
